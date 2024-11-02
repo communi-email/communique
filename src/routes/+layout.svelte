@@ -4,6 +4,7 @@
 	import { templateStore } from '$lib/stores/templates';
 	import { onMount } from 'svelte';
 	import '../app.css';
+	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { children } = $props();
 
@@ -37,5 +38,6 @@
 <ParaglideJS {i18n}>
 	<div class="md:p-10 p-6 min-h-screen bg-gradient-to-b from-slate-50 to-white">
 		{@render children()}
+		<Footer />
 	</div>
 </ParaglideJS>

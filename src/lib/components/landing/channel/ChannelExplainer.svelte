@@ -96,7 +96,7 @@
                     </div>
                 </div>
 
-                <div class="relative h-full p-6">
+                <div class="relative h-full p-4 sm:p-6">
                     <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs sm:text-sm font-medium mb-4 transition-colors duration-200"
                         class:bg-emerald-100={isSelected && channel.id === 'certified'}
                         class:text-emerald-700={isSelected && channel.id === 'certified'}
@@ -128,15 +128,27 @@
                         {#if isSelected}
                             <div 
                                 transition:fade={{ duration: 200 }}
-                                class="pt-4"
+                                class="pt-4 space-y-3"
                             >
-                                <button class="flex items-center gap-2 px-4 py-2 rounded-lg w-full justify-center"
-                                    class:bg-emerald-600={channel.id === 'certified'}
-                                    class:bg-blue-600={channel.id === 'direct'}
-                                    class:text-white={isSelected}>
-                                    Continue with {channel.title}
-                                    <ArrowRight class="w-4 h-4" />
-                                </button>
+                                <div class="flex items-center gap-2 px-4 py-2 rounded-lg w-full justify-between">
+                                    <span class="inline-flex items-center gap-2 text-slate-600">
+                                        <span class="relative flex h-2 w-2">
+                                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                                            <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                                        </span>
+                                        <span>In Development</span>
+                                    </span>
+                                    <a 
+                                        href="https://github.com/communisaas/communique-site"
+                                        class="group/link inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 py-2 -my-2 pl-4 -ml-4"
+                                    >
+                                        Follow Progress
+                                        <ArrowRight class="w-4 h-4 transform transition-transform duration-200 group-hover/link:translate-x-1" />
+                                    </a>
+                                </div>
+                                <p class="text-xs text-center text-slate-500">
+                                    {channel.id === 'certified' ? 'Congressional delivery system integration in progress' : 'Direct outreach system coming soon'}
+                                </p>
                             </div>
                         {/if}
 

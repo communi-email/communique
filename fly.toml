@@ -1,0 +1,18 @@
+# fly.toml app configuration file generated for communique-staging on 2024-10-28T04:53:44-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'communique'
+primary_region = 'sjc'
+
+[env]
+  PORT = '3000'
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'off'
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ['app']
