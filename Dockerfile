@@ -1,4 +1,6 @@
 # syntax = docker/dockerfile:1
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
 
 # Adjust NODE_VERSION as desired
 ARG NODE_VERSION=20.11.1
