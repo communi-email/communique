@@ -1,10 +1,7 @@
-# syntax = docker/dockerfile:1
-ARG DATABASE_URL
-ENV DATABASE_URL=$DATABASE_URL
+# syntax=docker/dockerfile:1
 
-# Adjust NODE_VERSION as desired
-ARG NODE_VERSION=20.11.1
-FROM node:${NODE_VERSION}-slim as base
+# Base stage
+FROM node:20.11.1-slim as base
 
 LABEL fly_launch_runtime="NodeJS/Drizzle"
 
@@ -14,7 +11,7 @@ WORKDIR /app
 # Set production environment
 ENV NODE_ENV=production
 
-# Throw-away build stage to reduce size of final image
+# Build stage
 FROM base as build
 
 # Install packages needed to build node modules
@@ -28,17 +25,21 @@ RUN npm ci --include=dev
 # Copy application code
 COPY --link . .
 
-# Build application & expose environment variables
+# Build application
+ARG DATABASE_URL
+ENV DATABASE_URL=$DATABASE_URL
 RUN npm run build
 
 # Remove development dependencies
 RUN npm prune --omit=dev
 
-# Final stage for app image
+# Final stage
 FROM base
 
+# Install runtime dependencies
 RUN apt-get update -qq && \
-    apt-get install -y openssl
+    apt-get install -y openssl && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copy built application
 COPY --from=build /app /app

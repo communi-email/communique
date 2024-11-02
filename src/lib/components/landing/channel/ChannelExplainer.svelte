@@ -130,8 +130,8 @@
                                 transition:fade={{ duration: 200 }}
                                 class="pt-4 space-y-3"
                             >
-                                <div class="flex items-center gap-2 px-4 py-2 rounded-lg w-full justify-between">
-                                    <span class="inline-flex items-center gap-2 text-slate-600">
+                                <div class="flex flex-wrap items-center gap-4 px-4 py-3 rounded-lg w-full justify-between">
+                                    <span class="inline-flex items-center gap-2 text-slate-600 whitespace-nowrap text-sm">
                                         <span class="relative flex h-2 w-2">
                                             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
                                             <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
@@ -140,9 +140,9 @@
                                     </span>
                                     <a 
                                         href="https://github.com/communisaas/communique-site"
-                                        class="group/link inline-flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 py-2 -my-2 pl-4 -ml-4"
+                                        class="group/link flex items-center text-sm text-slate-600 hover:text-slate-900 px-2"
                                     >
-                                        Follow Progress
+                                        <span class="mr-1.5">Follow Progress</span>
                                         <ArrowRight class="w-4 h-4 transform transition-transform duration-200 group-hover/link:translate-x-1" />
                                     </a>
                                 </div>
