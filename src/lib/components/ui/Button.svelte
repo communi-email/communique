@@ -3,41 +3,24 @@
     export let type: 'button' | 'submit' = 'button';
     export let cursor: 'default' | 'help' = 'default';
     export let classNames: string = '';
-    export let href: string | undefined = undefined;
 
-    const baseClasses = `
-        px-4 sm:px-6 
-        py-2 sm:py-3 
-        rounded-lg 
-        font-medium 
-        inline-flex 
-        items-center 
-        justify-center 
-        gap-2 
-        text-sm sm:text-base 
-        w-full sm:w-auto 
-        ${cursor}
-    `;
-    const variantClasses = {
-        primary: "bg-blue-600 hover:bg-blue-700 text-white transition-colors duration-200",
-        secondary: "bg-white hover:bg-slate-50 text-blue-600 border border-slate-200 hover:border-slate-300 transition-all duration-200"
-    };
+    interface $$Slots {
+        default: {};
+        trigger?: {}; // Add this to support the trigger slot
+    }
 </script>
 
-{#if href}
-    <a
-        {href}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="{baseClasses} {variantClasses[variant]} {classNames}"
-    >
-        <slot />
-    </a>
-{:else}
-    <button
-        {type}
-        class="{baseClasses} {variantClasses[variant]} {classNames}"
-    >
-        <slot />
-    </button>
-{/if}
+<button
+    {type}
+    class="px-6 py-3 sm:text-base text-sm rounded-lg font-medium flex items-center gap-2 transition-all duration-200 cursor-{cursor} {classNames}"
+    class:bg-blue-600={variant === 'primary'}
+    class:text-white={variant === 'primary'}
+    class:hover:bg-blue-700={variant === 'primary'}
+    class:bg-white={variant === 'secondary'}
+    class:text-blue-600={variant === 'secondary'}
+    class:border={variant === 'secondary'}
+    class:border-blue-200={variant === 'secondary'}
+    class:hover:border-blue-300={variant === 'secondary'}
+>
+    <slot />
+</button>

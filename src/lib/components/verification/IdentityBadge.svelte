@@ -21,20 +21,23 @@
     ];
 </script>
 
-<div class="inline-block w-full sm:w-auto">
+<div class="flex">
     <Popover let:open>
         <!-- Trigger -->
-        <div class="relative group w-full sm:w-auto" slot="trigger">
-            <div class="inline-flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-slate-50 border 
-                        border-slate-200 rounded-lg text-slate-700 cursor-help w-full sm:w-auto justify-center sm:justify-start">
-                <IdCard class="w-4 h-4" />
-                <span class="text-xs md:text-sm font-medium">Government ID Required</span>
-            </div>
-            <div class="absolute w-full h-4 bottom-0 translate-y-full"></div>
-        </div>
+        <button 
+            slot="trigger"
+            class="inline-flex items-center gap-2 px-2 sm:px-3 py-1.5 bg-slate-50 border 
+                   border-slate-200 rounded-lg text-slate-700 cursor-help
+                   transition-all duration-200 hover:scale-[1.02] hover:shadow-md hover:border-slate-300
+                   relative"
+        >
+            <IdCard class="w-4 h-4 shrink-0" />
+            <span class="text-xs md:text-sm font-medium whitespace-nowrap">Government ID Required</span>
+            <div class="absolute w-full left-0 h-4 bottom-0 translate-y-full"></div>
+        </button>
 
         <!-- Popover content -->
-        <div class="w-[280px] md:w-[320px] p-3 sm:p-4 max-w-[calc(100vw-2rem)] origin-top-left hover:opacity-100">
+        <div class="w-[280px] md:w-[320px] p-3 sm:p-4 max-w-[calc(100vw-2rem)] origin-top-left hover:opacity-100 cursor-text">
             <div class="space-y-6">
                 {#each idChecks as check}
                     <div 
