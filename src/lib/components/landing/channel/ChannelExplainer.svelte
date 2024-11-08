@@ -14,7 +14,7 @@
             features: [
                 {
                     icon: Landmark,
-                    text: 'Official CWC system delivery'
+                    text: "Congress's mail system (CWC)"
                 },
                 {
                     icon: CheckCircle2, 
